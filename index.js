@@ -13,7 +13,7 @@ async function runTask(
   waitForTask,
   waitForMinutes,
   taskOverrides,
-  awsvpcConfiguration
+  networkConfiguration
 ) {
   core.debug("Starting the task");
   let runTaskResponse;
@@ -23,7 +23,7 @@ async function runTask(
       taskDefinition: taskDefArn,
       count: taskCount,
       overrides: taskOverrides,
-      awsvpcConfiguration,
+      networkConfiguration,
     })
     .promise();
 
@@ -124,10 +124,9 @@ async function run() {
     const waitForTask = core.getInput("wait-for-task-completion", {
       required: false,
     });
-    const awsvpcConfiguration = core.getInput("awsvpc-configuration", {
+    const networkConfiguration = core.getInput("network-configuration", {
       required: false,
     });
-    console.log(awsvpcConfiguration);
     let waitForMinutes =
       parseInt(core.getInput("wait-for-minutes", { required: false })) || 30;
     if (waitForMinutes > MAX_WAIT_MINUTES) {
@@ -164,7 +163,7 @@ async function run() {
       waitForTask,
       waitForMinutes,
       overrides,
-      awsvpcConfiguration
+      networkConfiguration
     );
   } catch (error) {
     core.setFailed(error.message);

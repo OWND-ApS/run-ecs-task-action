@@ -22,8 +22,8 @@ inputs:
   overrides:
     description: "Json object of task level overrides to use"
     required: false
-  awsvpc-configuration:
-    description: "Configuration object for awsvpc"
+  network-configuration:
+    description: "Network configuration"
     required: false
 outputs:
   task-definition-arn:
