@@ -22,6 +22,9 @@ inputs:
   overrides:
     description: "Json object of task level overrides to use"
     required: false
+  awsvpc-configuration:
+    description: "Configuration object for awsvpc"
+    required: false
 outputs:
   task-definition-arn:
     description: "The ARN of the registered ECS task definition"
