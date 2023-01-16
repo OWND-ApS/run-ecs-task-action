@@ -24,6 +24,7 @@ async function runTask(
       count: taskCount,
       overrides: taskOverrides,
       networkConfiguration,
+      launchType: "FARGATE",
     })
     .promise();
 
