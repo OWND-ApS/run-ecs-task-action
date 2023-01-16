@@ -124,7 +124,7 @@ async function run() {
     const waitForTask = core.getInput("wait-for-task-completion", {
       required: false,
     });
-    const networkConfiguration = core.getInput("network-configuration", {
+    let networkConfiguration = core.getInput("network-configuration", {
       required: false,
     });
     let waitForMinutes =
@@ -155,6 +155,9 @@ async function run() {
     // Run the task with the task definition
     const clusterName = cluster ? cluster : "default";
     const overrides = taskOverrides ? JSON.parse(taskOverrides) : {};
+    networkConfiguration = networkConfiguration
+      ? JSON.parse(networkConfiguration)
+      : {};
     await runTask(
       ecs,
       clusterName,

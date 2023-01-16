@@ -23,7 +23,7 @@ inputs:
     description: "Json object of task level overrides to use"
     required: false
   network-configuration:
-    description: "Network configuration"
+    description: "Json object of configuration"
     required: false
 outputs:
   task-definition-arn:
